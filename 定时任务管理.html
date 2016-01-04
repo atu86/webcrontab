@@ -34,7 +34,7 @@
 
        $.ajax({
            type: "POST",
-           url: "cronlist.php",
+           url: "cron/cronlist.php",
            success: function(data){
                $('#crontab').append(data);
            }
@@ -82,7 +82,7 @@
           var oldcom  =  $(dom).parent().prev().find('span').text();
           $.ajax({
                 type: "POST",
-                url: "edit.php",
+                url: "cron/edit.php",
                 data:{
                     'id':id,
                     'oldtime':oldtime,

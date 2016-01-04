@@ -12,7 +12,7 @@
                 <ul>
 
                     <li><a href="定时任务管理.html" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>定时任务管理</a></li>
-
+                    <li><a href="主机管理.html" target="menuFrame"><i class="glyph-icon icon-chevron-right2"></i>主机管理</a></li>
                 </ul>
             </li>
         </ul>

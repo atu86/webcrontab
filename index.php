@@ -16,7 +16,7 @@
     <div class="top">
             <div style="float: left"><span style="font-size: 16px;line-height: 45px;padding-left: 20px;color: #fff">管理中心</h1></span></div>
             <div id="ad_setting" class="ad_setting">
-                <a class="ad_setting_a" href="javascript:; ">hxm</a>
+                <a class="ad_setting_a" href="javascript:; ">652120419@qq.com</a>
                 <ul class="dropdown-menu-uu" style="display: none" id="ad_setting_ul">
                     <li class="ad_setting_ul_li"> <a href="javascript:;"><i class="icon-signout glyph-icon"></i> <span class="font-bold">退出</span> </a> </li>
                 </ul>
