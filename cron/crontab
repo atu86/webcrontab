@@ -1,0 +1,3 @@
+* * */2 * */2 cd /home && ls > /tmp/b
+* * * * * cd /home && ls > /tmp/a
+* * * * * cd /home && ls > /tmp/a

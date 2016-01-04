@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>主机管理</title>
+<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" href="utilLib/bootstrap.min.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<span class="cp_title">主机管理</span>
+<!--<div class="add_cp">-->
+	<!--<a href="logo.html">+添加定时任务</a>-->
+<!--</div>-->
+<div class="table_con">
+	<table id="crontab">
+    	<tr class="tb_title">
+            <td width="10%">HOST</td>
+        	<td width="10%">IP</td>
+            <td width="10%">USER</td>
+            <td width="20%">管理</td>
+    </table>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/tendina.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+
+        $.ajax({
+            type: "POST",
+            url: "host.php",
+            success: function(data){
+                $('#crontab').append(data);
+            }
+        });
+    });
+    function jump() {
+
+        window.location.href="定时任务管理.html";
+    }
+
+</script>
