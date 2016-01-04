@@ -1,4 +1,7 @@
 <?php
+$ip=$_POST[ip];
+$host=$_POST[host];
+$user=$_POST[user];
 $id = $_POST[id];
 $oldtime=$_POST[oldtime];
 $oldcom=$_POST[oldcom];
@@ -13,9 +16,9 @@ else{
 
 
 $num = $id;
-$file='/var/spool/cron/root';
 
-$connection = ssh2_connect('115.29.38.216', 22, array('hostkey'=>'ssh-rsa'));
+
+$connection = ssh2_connect($host, 22, array('hostkey'=>'ssh-rsa'));
 
 if (ssh2_auth_pubkey_file($connection, 'root',
     '/var/lib/nginx/.ssh/id_rsa.pub',
@@ -23,7 +26,7 @@ if (ssh2_auth_pubkey_file($connection, 'root',
     echo "Public Key Authentication Successful\n";
 
     $sftp = ssh2_sftp($connection);
-    $stream = fopen("ssh2.sftp://$sftp/var/spool/cron/root", 'r');
+    $stream = fopen("ssh2.sftp://$sftp/var/spool/cron/$user", 'r');
 }
 
     $cont = stream_get_contents($stream);
@@ -32,7 +35,7 @@ if (ssh2_auth_pubkey_file($connection, 'root',
     $con_array = explode("\n", $cont);
     $con_array[$num] = $newline;
     $con = implode("\n", $con_array);
-    $f=fopen("ssh2.sftp://$sftp/var/spool/cron/root", "w");
+    $f=fopen("ssh2.sftp://$sftp/var/spool/cron/$user", "w");
     fwrite($f, $con);
 
     fclose($stream);

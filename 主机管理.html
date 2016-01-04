@@ -39,9 +39,33 @@
             }
         });
     });
-    function jump() {
+    function jump(dom) {
 
         window.location.href="定时任务管理.html";
+
+        var ip=  $(dom).parent().prev().prev().html();
+        var host= $(dom).parent().prev().prev().prev().html();
+        var user= $(dom).parent().prev().html();
+
+        $.ajax({
+            type: "POST",
+            url: "cron/cronlist.php",
+            data:{
+                'ip':ip,
+                'host':host,
+                'user':user
+            }
+        })
+
+        $.ajax({
+            type: "POST",
+            url: "cron/edit.php",
+            data:{
+                'ip':ip,
+                'host':host,
+                'user':user
+            }
+        })
     }
 
 </script>

@@ -11,6 +11,6 @@ foreach($config as $line) {
                         <td width="10%">' . "$host" . '</td>
                         <td width="10%">' . "$ip" . '</td>
                         <td width="10%">' . "$user" . '</td>
-                        <td width="20%"><input type="button" class="sj_btn" value="manage" onclick="jump()"></td>
+                        <td width="20%"><input type="button" class="sj_btn" value="manage" onclick="jump(this)"></td>
             </tr>';
 }
