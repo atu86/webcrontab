@@ -15,6 +15,7 @@
 <div class="table_con">
 	<table id="crontab">
     	<tr class="tb_title">
+            <td width="10%">序号</td>
             <td width="10%">HOST</td>
         	<td width="10%">IP</td>
             <td width="10%">USER</td>
@@ -41,31 +42,16 @@
     });
     function jump(dom) {
 
-        window.location.href="定时任务管理.html";
+          var hid =  $(dom).parent().prev().prev().prev().prev().html();
+//        var ip = $(dom).parent().prev().prev().html();
+//        var host = $(dom).parent().prev().prev().prev().html();
+//        var user = $(dom).parent().prev().html();
 
-        var ip=  $(dom).parent().prev().prev().html();
-        var host= $(dom).parent().prev().prev().prev().html();
-        var user= $(dom).parent().prev().html();
 
-        $.ajax({
-            type: "POST",
-            url: "cron/cronlist.php",
-            data:{
-                'ip':ip,
-                'host':host,
-                'user':user
-            }
-        })
+                location.href="定时任务管理.html?hid="+hid;
+              //  $(window.parent.$('#menuFrame')).attr('src', '定时任务管理.html');
 
-        $.ajax({
-            type: "POST",
-            url: "cron/edit.php",
-            data:{
-                'ip':ip,
-                'host':host,
-                'user':user
-            }
-        })
+
+
     }
-
 </script>

@@ -29,12 +29,27 @@
 <script type="text/javascript" src="js/common.js"></script>
 
 <script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+        var context = "";
+        if (r != null)
+            context = r[2];
+        reg = null;
+        r = null;
+        return context == null || context == "" || context == "undefined" ? "" : context;
+    }
    $(document).ready(function(){
+
+       var hid = GetQueryString("hid");
 
 
        $.ajax({
            type: "POST",
            url: "cron/cronlist.php",
+           data:{
+               'hid': hid
+           },
            success: function(data){
                $('#crontab').append(data);
            }
@@ -80,6 +95,7 @@
           var newcomval  =  $(dom).parent().prev().find('input').val();
           var oldtime =  $(dom).parent().prev().prev().find('span').text();
           var oldcom  =  $(dom).parent().prev().find('span').text();
+          var hid = GetQueryString("hid");
           $.ajax({
                 type: "POST",
                 url: "cron/edit.php",

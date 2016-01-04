@@ -1,9 +1,14 @@
 <?php
-$ip=$_POST[ip];
-$host=$_POST[host];
-$user=$_POST[user];
+$hid=$_POST[hid];
+$cfile=file_get_contents('../config.php');
 
-$command=$_POST[command];
+$l=explode("\n",$cfile);
+$l=$l[$hid];
+$l=explode(" ",$l );
+$ip=$l[1];
+$user=$l[2];
+$host=$l[0];
+
 
 
 $connection = ssh2_connect($ip, 22, array('hostkey'=>'ssh-rsa'));

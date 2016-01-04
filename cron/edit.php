@@ -7,6 +7,8 @@ $oldtime=$_POST[oldtime];
 $oldcom=$_POST[oldcom];
 $newcom = $_POST[newcom];
 $newtime =$_POST[newtime];
+
+var_dump($_POST);exit;
 if($newtime == "" && $newcom == ""){
     $newline = $oldtime." ".$oldcom;
 }
