@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html; charset=gb2312");
 
 $id = $_POST[id];
 $oldtime=$_POST[oldtime];

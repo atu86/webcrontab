@@ -32,7 +32,7 @@
     <div id="right-content" class="right-content">
         <div class="content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="定时任务管理.html" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="主机管理.html" style="overflow:visible;"
                         scrolling="yes" frameborder="no" width="100%" height="100%"></iframe>
             </div>
         </div>
