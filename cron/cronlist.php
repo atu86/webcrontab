@@ -1,6 +1,6 @@
 <?php
 $hid=$_POST[hid];
-$cfile=file_get_contents('../config.php');
+$cfile=file_get_contents('../config/config.php');
 
 $l=explode("\n",$cfile);
 $l=$l[$hid];

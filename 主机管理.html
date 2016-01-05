@@ -20,7 +20,7 @@
         	<td width="10%">IP</td>
             <td width="10%">用户</td>
             <td width="10%">端口</td>
-            <td width="20%">管理</td>
+            <td width="30%">管理</td>
 
     </table>
 </div>
@@ -36,7 +36,7 @@
 
         $.ajax({
             type: "POST",
-            url: "host.php",
+            url: "cron/host.php",
             success: function(data){
                 $('#crontab').append(data);
             }
@@ -52,8 +52,19 @@
 
                 location.href="定时任务管理.html?hid="+hid;
               //  $(window.parent.$('#menuFrame')).attr('src', '定时任务管理.html');
+    }
 
-
-
+    function del(dom) {
+        var hid =  $(dom).parent().prev().prev().prev().prev().prev().html();
+        $.ajax({
+            type:"POST",
+            url:"cron/del.php",
+            data:{
+                'hid':hid
+            },
+            success:function(data){
+                location.reload();
+            }
+        })
     }
 </script>
