@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html; charset=gb2312");
 $configfile='./config.php';
 $config=file($configfile);
 $num=-1;
