@@ -8,7 +8,21 @@
 </head>
 
 <body>
-<span class="cp_title">主机添加</span>
+<span class="cp_title">主机添加</span><br><br><br>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">主机标识</span>
+    <input id="hosttag" type="text" style="width:80%" class="form-control" placeholder="主机标识" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">IP地址</span>
+    <input id="ipaddr" type="text" style="width:80%" class="form-control" placeholder="IP地址" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">用户</span>
+    <input id="user" type="text" style="width:80%" class="form-control"  placeholder="用户" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">端口</span>
+    <input id="port" type="text" style="width:80%"  class="form-control" placeholder="端口" aria-describedby="basic-addon1">
+</div><br><br>
+
+<input type="button" class="btn btn-group-lg" style="width: 8%;background: dodgerblue" value="添加" onclick="addhost()">&nbsp&nbsp;
+
+<a href="主机管理.html"><input type="button" class="btn btn-group-lg" style="width: 8%;background: dodgerblue" value="返回" ></a>
 
 
 </body>
@@ -17,3 +31,27 @@
 <script type="text/javascript" src="js/tendina.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 
+<script>
+    function addhost(){
+        var hosttag=$('#hosttag').val();
+        var ipaddr=$('#ipaddr').val();
+        var user=$('#user').val();
+        var port=$('#port').val();
+        $.ajax({
+            type:"POST",
+            url:"cron/addhost.php",
+            data:{
+                'hosttag':hosttag,
+                'ipaddr':ipaddr,
+                'user':user,
+                'port':port
+            },
+            success:function(data){
+                window.location.href="主机管理.html";
+            }
+
+        })
+
+    }
+
+</script>
