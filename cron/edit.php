@@ -1,14 +1,20 @@
 <?php
-$ip=$_POST[ip];
-$host=$_POST[host];
-$user=$_POST[user];
+
 $id = $_POST[id];
 $oldtime=$_POST[oldtime];
 $oldcom=$_POST[oldcom];
 $newcom = $_POST[newcom];
 $newtime =$_POST[newtime];
 
-var_dump($_POST);exit;
+$hid=$_POST[hid];
+$cfile=file_get_contents('../config.php');
+$l=explode("\n",$cfile);
+$l=$l[$hid];
+$l=explode(" ",$l );
+$ip=$l[1];
+$user=$l[2];
+$host=$l[0];
+
 if($newtime == "" && $newcom == ""){
     $newline = $oldtime." ".$oldcom;
 }
@@ -20,9 +26,9 @@ else{
 $num = $id;
 
 
-$connection = ssh2_connect($ip, 22, array('hostkey'=>'ssh-rsa'));
+$connection = ssh2_connect("$ip", 22, array('hostkey'=>'ssh-rsa'));
 
-if (ssh2_auth_pubkey_file($connection, 'root',
+if (ssh2_auth_pubkey_file($connection, "$user",
     '/var/lib/nginx/.ssh/id_rsa.pub',
     '/var/lib/nginx/.ssh/id_rsa')) {
     echo "Public Key Authentication Successful\n";

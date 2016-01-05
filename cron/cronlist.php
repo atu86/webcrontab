@@ -11,7 +11,7 @@ $host=$l[0];
 
 
 
-$connection = ssh2_connect($ip, 22, array('hostkey'=>'ssh-rsa'));
+$connection = ssh2_connect('$ip', 22, array('hostkey'=>'ssh-rsa'));
 
 if (ssh2_auth_pubkey_file($connection, $user,
     '/var/lib/nginx/.ssh/id_rsa.pub',
