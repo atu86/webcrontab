@@ -9,9 +9,9 @@
 
 <body>
 <span class="cp_title">定时任务管理</span>
-<!--<div class="add_cp">-->
-	<!--<a href="logo.html">+添加定时任务</a>-->
-<!--</div>-->
+<div class="add_cp">
+	<input type="button" onclick="jump()" value="+添加定时任务" style="background: deepskyblue">
+</div>
 <div class="table_con">
 	<table id="crontab">
     	<tr class="tb_title">
@@ -39,6 +39,12 @@
         r = null;
         return context == null || context == "" || context == "undefined" ? "" : context;
     }
+
+    function jump(){
+        var hid = GetQueryString("hid");
+        location.href="任务添加.html?hid="+hid;
+    }
+
    $(document).ready(function(){
 
        var hid = GetQueryString("hid");

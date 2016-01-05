@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>定时任务添加</title>
+<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+<link rel="stylesheet" href="utilLib/bootstrap.min.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<span class="cp_title">定时任务添加</span><br><br><br>
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">分</span>
+    <input id="fen" type="text" style="width:80%" class="form-control" placeholder="分" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">时</span>
+    <input id="shi" type="text" style="width:80%" class="form-control" placeholder="时" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">天</span>
+    <input id="tian" type="text" style="width:80%" class="form-control"  placeholder="天" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">月</span>
+    <input id="yue" type="text" style="width:80%"  class="form-control" placeholder="月" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">周</span>
+    <input id="zhou" type="text" style="width:80%"  class="form-control" placeholder="周" aria-describedby="basic-addon1">
+
+</div><br><br>
+<div class="input-group">
+<span class="input-group-addon" id="basic-addon1" style="background: dodgerblue">添加命令</span>
+<input id="command" type="text" style="width:100%"  class="form-control" placeholder="添加命令" aria-describedby="basic-addon1">
+</div>
+<br><br>
+
+<input type="button" class="btn btn-group-lg" style="width: 8%;background: dodgerblue" value="添加" onclick="addcron()">&nbsp&nbsp;
+
+<a href="定时任务管理.html"><input type="button" class="btn btn-group-lg" style="width: 8%;background: dodgerblue" value="返回" ></a>
+
+</body>
+</html>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/tendina.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+        var context = "";
+        if (r != null)
+            context = r[2];
+        reg = null;
+        r = null;
+        return context == null || context == "" || context == "undefined" ? "" : context;
+    }
+
+    function addcron(){
+        var hid = GetQueryString("hid");
+        var fen=$('#fen').val();
+        var shi=$('#shi').val();
+        var tian=$('#tian').val();
+        var yue=$('#yue').val();
+        var zhou=$('#yue').val();
+        var command=$('#command').val();
+        $.ajax({
+            type:"POST",
+            url:"cron/addcron.php",
+            data:{
+                'hid':hid,
+                'fen':fen,
+                'shi':shi,
+                'tian':tian,
+                'yue':yue,
+                'zhou':zhou,
+                'command':command
+            },
+            success:function(data){
+                location.href="定时任务管理.html?hid="+hid;
+            }
+
+        })
+
+    }
+
+</script>
