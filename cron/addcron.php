@@ -26,13 +26,13 @@ if (ssh2_auth_pubkey_file($connection, $user,
     echo "Public Key Authentication Successful\n";
     $sftp = ssh2_sftp($connection);
     $stream = fopen("ssh2.sftp://$sftp/var/spool/cron/$user", 'r');
+    $oldfile=stream_get_contents($stream);
 }
 
-    $cont = stream_get_contents($stream);
+
 $f=fopen("ssh2.sftp://$sftp/var/spool/cron/$user", "w");
-$oldfile=stream_get_contents($f);
+
 $newfile=$oldfile.$newline;
-var_dump($newfile);exit;
 
 
 
