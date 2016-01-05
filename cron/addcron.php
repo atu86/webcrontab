@@ -24,12 +24,19 @@ if (ssh2_auth_pubkey_file($connection, $user,
     '/var/lib/nginx/.ssh/id_rsa.pub',
     '/var/lib/nginx/.ssh/id_rsa')) {
     echo "Public Key Authentication Successful\n";
-
     $sftp = ssh2_sftp($connection);
-
+    $stream = fopen("ssh2.sftp://$sftp/var/spool/cron/$user", 'r');
+}
 
     $cont = stream_get_contents($stream);
-    $f = fopen("ssh2.sftp://$sftp/var/spool/cron/$user", "a");
-    fwrite($f, $newline);
+$f=fopen("ssh2.sftp://$sftp/var/spool/cron/$user", "w");
+$oldfile=stream_get_contents($f);
+$newfile=$oldfile.$newline;
+var_dump($newfile);exit;
+
+
+
+    fwrite($f, $newfile);
+    fclone($stream);
     fclose($f);
-}
+
