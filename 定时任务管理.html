@@ -3,8 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>定时任务管理</title>
-<link rel="stylesheet" type="text/css" href="css/Iframe.css" />
-<link rel="stylesheet" href="utilLib/bootstrap.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/Iframe.css" />
+    <link rel="stylesheet" href="utilLib/bootstrap.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
 </head>
 
 <body>
@@ -12,7 +15,7 @@
 <div class="add_cp">
 	<input type="button" onclick="jump()" value="+添加定时任务" style="background: deepskyblue">
 </div>
-<div class="table_con">
+<div class="table_con table table-hover" >
 	<table id="crontab">
     	<tr class="tb_title">
             <td width="7%">序号</td>
