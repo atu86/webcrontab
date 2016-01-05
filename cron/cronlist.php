@@ -8,10 +8,10 @@ $l=explode(" ",$l );
 $ip=$l[1];
 $user=$l[2];
 $host=$l[0];
+$port=$l[3];
 
 
-
-$connection = ssh2_connect("$ip", 22, array('hostkey'=>'ssh-rsa'));
+$connection = ssh2_connect("$ip", $port, array('hostkey'=>'ssh-rsa'));
 
 if (ssh2_auth_pubkey_file($connection, $user,
     '/var/lib/nginx/.ssh/id_rsa.pub',
