@@ -1,9 +1,10 @@
 <?php
 $cfile='../config/config.php';
 $hid=$_POST[hid];
-$c=file($cfile);
-foreach($c as $line){
-    $handler=$line[$hid];
-}
-var_dump($handler);
+$content = file_get_contents($cfile);
+$con_array = explode("\n", $content);
+$con_array[$hid]="";
+$con = implode("\n", $con_array);
+file_put_contents($cfile, $con);
+
 
