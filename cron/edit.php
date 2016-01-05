@@ -28,7 +28,7 @@ $num = $id;
 
 $connection = ssh2_connect("$ip", 22, array('hostkey'=>'ssh-rsa'));
 
-if (ssh2_auth_pubkey_file($connection, "$user",
+if (ssh2_auth_pubkey_file($connection, $user,
     '/var/lib/nginx/.ssh/id_rsa.pub',
     '/var/lib/nginx/.ssh/id_rsa')) {
     echo "Public Key Authentication Successful\n";
