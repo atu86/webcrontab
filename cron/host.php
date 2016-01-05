@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=gb2312");
-$configfile='./config.php';
+$configfile='../config/config.php';
 $config=file($configfile);
 $num=-1;
 foreach($config as $line) {
